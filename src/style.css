@@ -1,0 +1,145 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+  }
+  * {
+    margin: 0;
+  }
+  body {
+    font-family: "Roboto", sans-serif;
+    line-height: 1.5;
+    font-weight: 400;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+  }
+  img{
+    display: block;
+    max-width: 100%;
+  }
+  input, button{
+    font: inherit;
+  }
+  p, h1, h2, h3, h4 {
+    overflow-wrap: break-word;
+  }
+  /********************/
+  .main{
+   display: grid;
+    grid-template-columns: repeat(3,1fr);
+    
+  }
+  .the-library-of-books{
+    grid-column: 1/4;
+    background-color: #22d3ee;
+    border-radius: 5px;
+    font-family:  "Platypi", serif;;
+  }
+  .first-section{
+    text-align: center;
+    ;
+  }
+  /***********************/
+  .sidebar{   
+    background-color:#22d3ee;;
+    border-radius: 5px;
+    font-family:  "Platypi", serif;;
+       
+  }
+  .buttonSidebar{
+    border-radius: 5px;
+    border: none;
+    background-color: #a5b4fc;
+    text-align: center;
+  }
+
+  /*********************/
+  .space-book{
+    grid-column: 2/4;
+    border-radius: 5px;
+    background-color: #d1fae5;
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    
+  }
+  .book-card{
+    /*border: 1px solid #a78bfa;*/
+    border-radius: 5px;
+    margin: 15px;
+    /*max-width: 200px;*/
+    padding: 5px 5px 5px 5px;
+    background-color: #fafaf9;
+    box-shadow: 1px 1px 5px #d1fae5; 
+  }
+  .book-title{
+    font-weight: bold;
+    font-family: "Poetsen One", sans-serif;
+  }
+  .book-author{
+    font-weight: bold;
+    font-style: italic;
+    color: #2563eb;
+  }
+  .book-pages,
+  .book-info{
+    font-family: "Poetsen One", sans-serif;;
+  }
+  .removeButton{
+    border: none;
+    border-radius: 5px;
+    background-color: #f87171;
+    font-family: "Platypi", serif;;;
+  }
+  .changeStatus{
+    border: none;
+    border-radius: 5px;
+    background-color: #86efac;
+    font-family: "Platypi", serif;;;
+  }
+  .containerDiv{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+  /************************/
+  .form{
+    padding: 25px;
+  }
+  .close-form{
+    border: none;
+    border-radius: 5px;
+    background-color: #ef4444
+  }
+  .separate-form{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+  input{
+    border: none;
+    border-radius: 5px;
+  }
+  input:focus{
+    outline: none;
+    border: 1x solid blue;
+    box-shadow: 0px 1px 5px blue;
+  }
+  .submit{
+    border: none;
+    border-radius: 5px;
+    background-color:  #818cf8;
+  }
+
+  dialog[open] {
+    display: block;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-100%, -50%);
+    
+    padding: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    border: none;
+    border-radius: 10px;
+    }
+    dialog {
+    display: none;
+    }
