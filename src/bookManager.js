@@ -1,4 +1,4 @@
-import Book from "./book";
+import Book from "./book.js";
 
 class BookManager{
     constructor(){
@@ -13,15 +13,27 @@ class BookManager{
 
     changeStatusBook(index){
         this.myLibrary[index].switchStatusBook()
+        this.displayBook()
     }
 
     removeBook(index){
         this.myLibrary.splice(index, 1)
+        this.displayBook()
+    }
+
+    editBook(index, newTitle, newNumberOfPage, newAuthor, newIsRead){
+        const book = this.myLibrary[index]
+        book.title = newTitle;
+        book.numberOfPage = newNumberOfPage;
+        book.author = newAuthor;
+        book.isRead = newIsRead;
+        this.displayBook()
+
     }
 
 
     displayBook(){
-        const bookContainer = document.getElementById('bookContainer')
+        const bookContainer = document.querySelector('.space-book')
         bookContainer.innerHTML = " "
 
         this.myLibrary.forEach((book, index)=>{
@@ -38,7 +50,7 @@ class BookManager{
           
             const bookPages = document.createElement("div")
             bookPages.classList.add("book-pages")
-            bookPages.textContent = `Number of page: ${book.pages}`
+            bookPages.textContent = `Number of page: ${book.numberOfPage}`
           
             const bookIsRead = document.createElement("div")
             bookIsRead.classList.add("book-info")
@@ -56,15 +68,31 @@ class BookManager{
                 this.removeBook(index)
             })
             const changeStatus = document.createElement('button')
-            classList.add("changeStatus")
+            changeStatus.classList.add("changeStatus")
             changeStatus.textContent = 'change status'
             changeStatus.style.cursor = 'pointer'
             changeStatus.style.marginLeft = '10px'
             changeStatus.addEventListener('click', ()=>{
                 this.changeStatusBook(index)
             })
+
+            const editNewBook = document.createElement('button')
+            editNewBook.textContent = 'edit'
+            editNewBook.classList.add('editNewBook')
+            editNewBook.style.cursor = 'pointer'
+            editNewBook.style.marginLeft = '10px'
+            editNewBook.addEventListener('click', ()=>{
+                const newTitle = prompt('newTitle', `${book.title}`)
+                const newNumberOfPage = prompt('newNumberOfPage', `${book.numberOfPage}`)
+                const newAuthor = prompt('newAuthor', `${book.author}`)
+                const newIsRead = prompt('newIsRead', `${book.isRead}`)
+                this.editBook(index, newTitle, newNumberOfPage, newAuthor, newIsRead)
+            })
+
+
             containerDiv.appendChild(remove)
             containerDiv.appendChild(changeStatus)
+            containerDiv.appendChild(editNewBook)
             bookCard.appendChild(bookTitle)
             bookCard.appendChild(bookAuthor)
             bookCard.appendChild(bookPages)
