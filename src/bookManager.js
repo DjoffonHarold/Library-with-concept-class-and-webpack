@@ -2,33 +2,45 @@ import Book from "./book.js";
 
 class BookManager{
     constructor(){
-        this.myLibrary = []
+        this.library = []
+        this.loadLibrary()
     }
 
-    addBook(title, numberOfPage, author, isRead){
-        const book = new Book(title, numberOfPage, author, isRead)
-        this.myLibrary.push(book)
+    addBook(title , author,numberOfPage,  isRead){
+        const book = new Book(title , author,numberOfPage,  isRead)
+        this.library.push(book)
+        this.saveLibrary()
         this.displayBook()
     }
 
     changeStatusBook(index){
-        this.myLibrary[index].switchStatusBook()
+        this.library[index].switchStatusBook()
+        this.saveLibrary()
         this.displayBook()
     }
 
     removeBook(index){
-        this.myLibrary.splice(index, 1)
+        this.library.splice(index, 1)
+        this.saveLibrary()
         this.displayBook()
     }
 
-    editBook(index, newTitle, newNumberOfPage, newAuthor, newIsRead){
-        const book = this.myLibrary[index]
+    editBook(index, newTitle, newAuthor, newNumberOfPage, newIsRead){
+        const book = this.library[index]
         book.title = newTitle;
-        book.numberOfPage = newNumberOfPage;
         book.author = newAuthor;
+        book.numberOfPage = newNumberOfPage;
         book.isRead = newIsRead;
+        this.saveLibrary()
         this.displayBook()
 
+    }
+    saveLibrary(){
+        localStorage.setItem('library', JSON.stringify(this.library))
+    }
+    loadLibrary(){
+        const library = JSON.parse(localStorage.getItem('library'))
+        this.library = library ? library : []
     }
 
 
@@ -36,7 +48,7 @@ class BookManager{
         const bookContainer = document.querySelector('.space-book')
         bookContainer.innerHTML = " "
 
-        this.myLibrary.forEach((book, index)=>{
+        this.library.forEach((book, index)=>{
             const bookCard = document.createElement("div")
             bookCard.classList.add("book-card")
            
@@ -83,10 +95,10 @@ class BookManager{
             editNewBook.style.marginLeft = '10px'
             editNewBook.addEventListener('click', ()=>{
                 const newTitle = prompt('newTitle', `${book.title}`)
-                const newNumberOfPage = prompt('newNumberOfPage', `${book.numberOfPage}`)
                 const newAuthor = prompt('newAuthor', `${book.author}`)
+                const newNumberOfPage = prompt('newNumberOfPage', `${book.numberOfPage}`)
                 const newIsRead = prompt('newIsRead', `${book.isRead}`)
-                this.editBook(index, newTitle, newNumberOfPage, newAuthor, newIsRead)
+                this.editBook(index, newTitle, newAuthor, newNumberOfPage, newIsRead)
             })
 
 

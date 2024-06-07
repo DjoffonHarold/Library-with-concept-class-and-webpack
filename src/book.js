@@ -1,8 +1,8 @@
 class Book {
-    constructor(title , numberOfPage, author, isRead ){
+    constructor(title , author,numberOfPage,  isRead ){
         this.title = title;
-        this.numberOfPage = numberOfPage;
         this.author = author;
+        this.numberOfPage = numberOfPage;
         this.isRead = isRead;
     }
 
