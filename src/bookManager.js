@@ -1,9 +1,8 @@
 import Book from "./book.js";
 
 class BookManager{
-    constructor(){
-        this.library = []
-        this.loadLibrary()
+    constructor() {
+        this.library = this.loadLibrary(0) || []
     }
 
     addBook(title , author,numberOfPage,  isRead){
@@ -36,11 +35,11 @@ class BookManager{
 
     }
     saveLibrary(){
-        localStorage.setItem('library', JSON.stringify(this.library))
+        localStorage.setItem('bookManager', JSON.stringify(this.library))
     }
     loadLibrary(){
-        const library = JSON.parse(localStorage.getItem('library'))
-        this.library = library ? library : []
+        const library = localStorage.getItem('bookManager')
+        return library? JSON.parse(library): null
     }
 
 
