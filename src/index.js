@@ -6,7 +6,6 @@ import BookManager from './bookManager.js'
 
 
 
-
 document.getElementById('open-dialog').addEventListener('click',()=>{
     document.getElementById('task-dialog').showModal()
 })

@@ -18,16 +18,16 @@
                 <form  method="post" class="form" id="task-form">
                     <div class="separate-form">
                         <div class="left-side-form">
-                            <label for="title">Title</label>
-                            <input class="input-form" type="text" name="title" id="title"> <br>
+                            <label for="title">Title</label> <br>
+                            <input class="input-form" type="text" name="title" id="title" maxlength="15" minlength="5"  required> <br>
     
-                            <label  for="pages">Number of pages</label>
-                            <input class="input-form" type="text" name="pages" id="pages">
+                            <label  for="pages">Number of pages</label> <br>
+                            <input class="input-form" type="number" name="pages" id="pages" max="1000" min="50"  required>
                         </div>
                         <div class="right-side">
-                            <label for="author">Author</label>
-                            <input class="input-form" type="text" name="author" id="author"> <br> <br>
-                            <label for="isRead">Read : </label>
+                            <label for="author">Author</label> <br>
+                            <input class="input-form" type="text" name="author" id="author" maxlength="15" minlength="5" required> <br> <br>
+                            <label for="isRead">Read : </label> <br>
                             <input class="input-form" type="checkbox" name="isRead" id="isRead"> <br>
                         </div>                   
                     </div> <br>
